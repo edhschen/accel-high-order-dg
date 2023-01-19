@@ -1,0 +1,291 @@
+\documentclass[openany]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{tcolorbox}
+\usepackage{color}   %May be necessary if you want to color links
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{breqn}
+\usepackage{float}
+\usepackage{subfig}
+\usepackage{listings}
+\usepackage{fancyvrb}
+\usepackage{bm}
+\usepackage{cancel}
+\usepackage{enumitem}
+\usepackage{pifont}
+\usepackage{nameref}
+\usepackage{tikz}
+\usepackage{mathtools}
+\usepackage{multicol}
+\usepackage{wrapfig}
+\usepackage{minted}
+
+\usepackage{titlesec}
+% \usepackage{etoc}
+% \usepackage{minitoc}
+% \usepackage{subfigure}
+% \usepackage[subfigure]{tocloft}
+
+\usepackage{sectsty}
+\usepackage{titlesec}
+\usepackage{lipsum}
+% \usepackage{unicode-math}
+% \usepackage{erewhon-math}
+
+
+% =====FONTS=====
+% LaTeX
+% \usepackage{fourier-otf}
+
+% \setmainfont{Erewhon}
+% \setmathfont{Erewhon-Math.otf}
+
+% \sectionfont{\fontsize{12}{5}\selectfont}
+% \subsectionfont{\fontsize{10}{5}\selectfont\normalfont}
+
+% \titleformat*{\subsection}{\footnotesize\bfseries}
+
+% \urlstyle{same}
+\usepackage[nodayofweek]{datetime}
+% \titleformat{\subsection}%
+%   [hang]% <shape>
+%   {\normalfont\bfseries\Large}% <format>
+%   {}% <label>
+%   {0pt}% <sep>
+%   {}% <before code>
+% \renewcommand{\thesubsection}{}% Remove section references...
+% \renewcommand{\thesection}{\arabic{section}}%... from subsections
+
+
+\usemintedstyle{vs}
+\setminted{fontsize=\footnotesize, breaklines}
+% \setcounter{secnumdepth}{0}
+% \RecustomVerbatimEnvironment{Verbatim}{BVerbatim}{}
+% \renewcommand{\figurename}{Listing}
+
+% PLOTTING PACKAGES
+% \usepackage{pst-all}
+% \usepackage{pst-grad} % For gradients
+% \usepackage{pst-plot} % For axes
+% \usepackage[space]{grffile} % For spaces in paths
+% \usepackage{etoolbox} % For spaces in paths
+%  \makeatletter % For spaces in paths
+%  \patchcmd\Gread@eps{\@inputcheck#1 }{\@inputcheck"#1"\relax}{}{}
+%  \makeatother
+
+% \usepackage{xcolor}
+
+% Cancel Colors
+\newcommand\Ccancel[2][black]{\renewcommand\CancelColor{\color{#1}}\cancel{#2}}
+
+% Reformat Section Sizes
+% \titleformat*{\section}{\large\bfseries}
+% \titleformat*{\subsection}{\normalsize\bfseries}
+
+% Code Styling
+\pagestyle{fancy}
+\usepackage{color}
+% \usepackage{sty/code}
+
+% \hypersetup{
+%     colorlinks=true,
+%     linktoc=all,
+%     linkcolor=blue
+% }
+\hypersetup{colorlinks=True, urlcolor=MidnightBlue, linkcolor=black, pdfnewwindow}
+\urlstyle{same}
+% \def\UrlFont{\em}
+
+% Date Format
+\newdateformat{monthyeardate}{%
+  \monthname[\THEMONTH] \THEYEAR}
+  
+\makeatletter
+\newcommand*{\currentname}{\@currentlabelname}
+\makeatother
+
+\usetikzlibrary{plotmarks,calc}
+
+% \renewcommand{\cftsecafterpnum}{\hspace*{7.5em}}
+% \renewcommand{\cftsubsecafterpnum}{\hspace*{7.5em}}
+
+\makeatletter
+\renewcommand\tableofcontents{%
+    \@starttoc{toc}%
+}
+\makeatother
+
+% Custom Title
+\newcommand{\SheetTitle}[4]{
+  {\noindent\huge\bf  \\[0\baselineskip] {\selectfont ML High-Order DG}}\\[1.5\baselineskip] %     Title
+  { {\bf \selectfont #1}\\ {\textit{\selectfont January 2022}}} {\hfill\normalsize \textsf{Edmund Chen}} % Author name
+  \\[-0.5\baselineskip]}
+
+\makeatletter \lst@CCPutMacro \lst@ProcessOther {"2D}{\lst@ttfamily{-{}}{-}} \@empty\z@\@empty \makeatother
+
+\lhead{\small \textit{ML High-Order DG, \currentname}}
+\rhead{\footnotesize Edmund Chen - \monthyeardate\today}
+\renewcommand{\familydefault}{\sfdefault}
+
+% \fancyhf{}
+% \fancyhead[L]{\leftmark}
+% \fancyhead[R]{\thepage}
+
+\makeatletter
+\renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt}
+  \LARGE \bf\selectfont \@title
+
+  \@author
+\egroup
+}
+\makeatother
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\bx}{\mathbf{x}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries}{}{0pt}{\Huge}
+
+\linespread{1.15}
+\renewcommand{\familydefault}{\sfdefault}
+
+% \newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+% \newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\LIM}{\textrm{LIM}}
+\newcommand{\thm}[2]{\begin{tcolorbox}[colback=black!5!white, colframe=black!10!white, coltitle=black, colbacktitle=black!10!white, title={Definition: #1}, fonttitle=\bfseries, arc=0pt, outer arc=0pt]
+{#2}
+\end{tcolorbox}}
+\newcommand{\p}[2]{\frac{\partial#1}{\partial#2}}
+\renewcommand{\d}{\Delta}
+\renewcommand{\o}{\mathcal{O}}
+\newcommand{\pt}[3]{#1^{#2}_{#3}}
+
+% \title{math 6641}
+% \author{Ed C}
+% \date{January 2022}
+
+\begin{document}
+\thispagestyle{empty}
+
+\SheetTitle{Accelerated High-Order Discontinuous Galerkin methods} \hfill \\
+
+\vspace{1em}
+{\footnotesize 
+  
+\tableofcontents}
+
+% \maketitle
+\raggedright
+\section{Introduction}
+Summary of notes and some other things for research and independent study. Articles and whatnot.
+
+\section{Literature Reviews}
+
+\section{Discontinuous Galerkin Methods}
+Discontinuous Galerkin methods are a subclass of finite element methods that admit solutions over a function space of discontinuous piecewise polynomial basis functions relative to a weak formulation of some system of PDEs. By not imposing requirements on the continuity of the approximated solution, we remove much of the synchronization needed between different mesh elements, and every mesh element's necessary data is restricted to the boundary information of the elements immediately neighboring it. Effectively this allows for element-wise high-order approximations for relatively efficient computational cost and improves the parallelizability of the overaching numerical procedure, exhibiting high parallel efficiency. Discontinuous Galerkin Methods are well suited for large-scale time-dependent problems, such as transport simulations.
+
+\subsection{Mathematical Foundations}
+Concretely, this means that for the nodal representation of $u_i^k$ for node $i$ in element $k$, there are $i+1$ nodes in an $i$-order approximation. The solution we approximate is then seen by
+$$u_h(x) = \sum^n_{k=1}\sum^p_{i=0}u_i^k\varphi^k_i(x)$$
+Let us take for an example problem the scalar advection equation between $0\leq x\leq 1$, a conservation law. 
+$$ \p{u}{t} + \p{f(u)}{x} = 0 $$
+As standard with finite element methods, this admits an integral equation Galerkin formulation, find $u_h \in V_h$ for some function space $V_h$ such that
+$$ \int^1_0 \p{u_h}{t}vdx + \int^1_0 \p{f(u_h)}{x} v dx = 0 \quad \forall v \in V_h$$
+We set the test function $v$ to the desired basis function at node $i$ for element $k$, denoted by $\varphi_i^k(x)$ and integrate by parts
+$$ \int_{x_{k-1}}^{x_k} \p{u_h}{t} \varphi^k_i dx + \left[ f(u_h(x))\varphi_i^k(x)\right]^{x_k}_{x_{k-1}} - \int_{x_{k-1}}^{x_k} f(u_h(x)) \p{\varphi_i^k}{x}dx = 0$$
+Note that this requires us to evaluate some $u_h(x)$, which as we know has $n$ discontinuous values corresponding to the $n$ elements that have this specific $x$ value as a boundary point. We introducing numerical fluxes at these discontinuities, namely defining what value $f(u_h(x))$ should take. Note that this is one of the downsides of the Discontinuous Galerkin method, namely that although there is less data movement, the data structures encoding the approximate solutions are larger due to multiple discontinuous solutions at each mesh point. In this case, we see that for an example $f(u) = u$ we can use a central difference scheme, yielding 
+$$f(u_h(x))\approx F(u^+, u^-) = \frac{u^+ + u^-}{2}$$
+$$\int_{x_{k-1}}^{x_k} \p{u_h}{t} \varphi^k_i dx + F(u_0^{k+1},u_p^k)\varphi^k_i(x_k) - F(u_0^k,u_p^{k-1})\varphi_i^k(x_{k-1}) - \int_{x_{k-1}}^{x_k} f(u_h(x)) \p{\varphi_i^k}{x}dx = 0$$
+As standard with finite element methods, we then expand the approximate solution to its series expansion and rearrange the summation and integral terms.
+\begin{dmath*}
+\int_{x_{k-1}}^{x_k} \p{}{t}\left(\sum^p_{i=0}u_i^k\varphi^k_i(x) \right)\varphi^k_j dx - \int_{x_{k-1}}^{x_k} f\left(\sum^p_{i=0}u_i^k\varphi^k_i(x) \right) \p{\varphi_j^k}{x}dx  + \frac{u_0^{k+1} + u_p^k}{2}\varphi^k_i(x_k) - \frac{u_0^k + u_p^{k-1}}{2}\varphi_i^k(x_{k-1})= 0
+\end{dmath*}
+Note that as we are taking $f(u)=u$, the second integral simplifies. Rearranging to pop out the $u_i^k$ terms gives us that
+\begin{dmath*}
+\sum^p_{i=0}\p{u_i^k}{t}\left[\left(\int_{x_{k-1}}^{x_k} \varphi^k_i(x)\varphi^k_j dx\right) - u_i^k\left(\int_{x_{k-1}}^{x_k} \varphi^k_i(x)  \p{\varphi_j^k}{x}dx \right)\right] + \frac{u_0^{k+1} + u_p^k}{2}\varphi^k_i(x_k) - \frac{u_0^k + u_p^{k-1}}{2}\varphi_i^k(x_{k-1})= 0
+\end{dmath*}
+Using Gaussian quadrature or symbolic integration, the terms in integrals can then be evaluated, and are known as elementary matrices. 
+$$ M^k_{ij} = \int_{x_{k-1}}^{x_k} \varphi^k_i(x)\varphi^k_j dx \quad C^k_{ij} = \int_{x_{k-1}}^{x_k} \varphi^k_i(x)  \p{\varphi_j^k}{x}dx$$
+We now need to choose the appropriate discontinuous piecewise polynomial basis functions so that this works. For an element of degree $p$ and width $h$ we have points $x_i$ for $i=0,\dots,p$. The natural choice, equidistant points $x_i = ih/p$ is only good for a low degree $p$, a better choice is to use Chebyshev or Gauss-Lobatto nodes, a popular choice in polynomial interpolation since they reduce Runge's phenomenon, the effect when the resulting polynomial oscillates more than desired between two points. Recall that with all basis functions, they need to satisfy
+$$\varphi_i(s_k) = \delta_{ij} = \begin{cases} 1 & i = j \\ 0 & i \neq j \end{cases} $$
+We satisfy this condition by writing our basis functions in the form
+$$\varphi_i(s) = \sum^p_{j=0} c_i^j P_j(s) $$
+where $P_j$ is a basis for the polynomials of degree $p$. The monomial basis given by $P_j(s) = s^j$ is only effective for a low $p$ order. A better choice would be to use orthogonal polynomials such as the Legendre or Chebyshev polynomials. Here, we choose the former. As such our requisite linear system takes the form
+$$\begin{pmatrix} P_0(s_0) & \dots & P_p(s_0) \\ \vdots & \ddots & \vdots \\ P_0(s_p) & \dots & P_p(s_p) \end{pmatrix} = \begin{pmatrix} c_0^0 & \dots & c_p^0 \\ \vdots & \ddots & \vdots \\ c_0^p & \dots & c_p^p  \end{pmatrix} = \mathbf{I}$$
+this linear system gives us a coefficient matrix $C = V^{-1}$ which defines the coefficients for our basis functions on a given element. Note that this only needs to be determined once per mesh. Our elementary matrices can then be solved by means of numerical quadrature. Gaussian quadrature uses rules that dictate
+$$ \int^1_{-1} f(x) dx \approx \sum^n_{i=1} w_if(x_i)$$
+If $x_i$ are the zeros of the $n$th Legendre polynomial and the appropriate weights $w_i$ are chosen to exactly integrate polynomials of order up to degree $n-1$, then this rule gives the exact integration for polynomials of degree up to $2n-1$. Returning to our sample problem and substituting this in, we can see the resulting system that needs to be solved becomes
+$$ M^k \p{u^k}{t} - C^k u^k + \left[- \frac{u_0^k + u_p^{k-1}}{2},0,\dots , 0, \frac{u_0^{k+1} + u_p^k}{2}\right]^T = 0$$
+We use a forward-in-time scheme, that is we first use the existing approximate solution $u^k$ to solve for $\p{u^k}{t}$ and then use any of the ODE numerical approximation schemes, such as Runge-Kutta 4, to get the next timestep. Note that if $p=0$, that is each element only has points on its outside boundaries, this generalizes into the finite volume method. Logically, each element obtains a constant volume throughout, which are discontinuous at boundaries between elements.
+% \subsection{Generalization for Conservation Laws}
+\subsection{Local Discontinuous Galerkin Methods}
+The above method works well for first-order systems of PDEs as the orthogonal polynomials are able to effectively render a high-fidelity approximation of first-order derivatives. However, for high-order spatial derivatives, piecewise discontinuous polynomial basis functions are not great for approximating these terms. For these problems, we introduce the Local Discontinuous Galerkin method. Note these work for all types of PDEs, but in keeping with our previous example, consider the scalar convection-diffusion equation given by
+$$\p{u}{t} + \p{f(u)}{x} - \mu \p{^2u}{x^2} = 0 $$
+With the Local Discontinuous Galerkin method, we split this into a system of two equations, decomposing the second order spatial derivative into another equation dependent on another independent variable $\sigma$. Note this only applies to spatial derivatives, as Discontinuous Galerkin is only operating on the spatial terms of the equation, the temporal term is dealt with by other numerical methods for ODEs, such as forward Euler. After decomposition, this is
+\begin{align*}
+    \p{u}{t} + \p{f(u)}{x} - \mu \p{\sigma}{x} &= 0 \\ \p{u}{x} &= \sigma
+\end{align*}
+As keeping with the process we described for the typical Discontinuous Galerkin Method, the weak form given by the Galerkin method is shown to be
+\begin{align*}
+\int^1_0 \p{u_h}{t} vdx + \int^1_0 \left( \p{f(u_h)}{x} - \mu \p{\sigma_h}{x} \right) v dx = 0 \quad \forall v \in V_h \\
+\int^1_0 \p{u_h}{x} \tau dx  = \int^1_0 \sigma_h \tau dx \quad \forall \tau \in V_h
+\end{align*}
+We now have two test functions for the two equations, both of which lie in the same function space. So we take $v, \tau = \varphi_i^k \in V_h$ and integrate by parts to get that
+$$
+\int^{x_k}_{x_{k-1}} \p{u_h}{t} \varphi^k_i dx + \left[ \left(f(u_h(x)) - \mu \sigma_h(x)\right) \varphi^k_i(x) \right]^{x_k}_{x_{k-1}} - \int^{x_k}_{x_{k-1}} (f(u_h(x)) - \mu \sigma_h(x)) \p{\varphi_i^k(x)}{x} dx = 0
+$$
+$$
+\left[ u_h(x) \varphi_i^k(x) \right]^{x_k}_{x_{k-1}} - \int^{x_k}_{x_{k-1}} u_h(x) \p{\varphi^k_i(x)}{x} dx = \int^{x_k}_{x_{k-1}} \sigma_h(x) \varphi^k_i(x) dx
+$$
+In a similar fashion, we need to determine the numerical flux functions at the discontinuities. As seen, we need to evaluate $f(u_h(x))$, $\sigma_h(x)$, $u_h(x)$. For $f(u)=u$ we then choose 
+$$f(u_h(x))\approx F(u^+,u^-) = u^- \quad u_h(x) \approx \hat{u}(u^+,u^-) = u^+ \quad \sigma_h(x) \approx \hat{\sigma} (\sigma^+,\sigma^-) = \sigma^-$$ 
+Accordingly, we use this to evaluate the terms that come out of integration by parts and substitute in the expression for the approximate solution given by $u_h$ and get that
+\begin{dmath*}
+\int^{x_k}_{x_{k-1}} \p{}{t}\left(\sum^p_{i=0}u_i^k\varphi^k_i(x) \right) \varphi^k_j(x) dx - \int^{x_k}_{x_{k-1}} \left(f\left(\sum^p_{i=0}u_i^k\varphi^k_i(x) \right) - \mu \left(\sum^p_{i=0}\sigma_i^k\varphi^k_i(x) \right)\right) \p{\varphi_j^k(x)}{x} dx + (F(u^{k+1}_0,u^k_p)- \mu \hat{\sigma}(\sigma^{k+1}_0,\sigma^k_p)) - (F(u^{k}_0,u^{k-1}_p)- \mu \hat{\sigma}(\sigma^{k}_0,\sigma^{k-1}_p)) = 0
+\end{dmath*}
+\begin{dmath*}
+\int^{x_k}_{x_{k-1}} \left(\sum^p_{i=0}u_i^k\varphi^k_i(x) \right) \p{\varphi^k_j(x)}{x} dx + \int^{x_k}_{x_{k-1}} \left(\sum^p_{i=0}\sigma_i^k\varphi^k_i(x) \right) \varphi^k_i(x) dx = 
+\hat{u}(u^{k+1}_0,u^k_p) \varphi_i^k(x) - \hat{u}(u^{k}_0,u^{k-1}_p)\varphi_j^k(x)
+\end{dmath*}
+Again, we switch the order of the integral and series to get the form
+\begin{dmath*}
+\sum^p_{i=0}\p{u^k_i}{t}\left[ \int^{x_k}_{x_{k-1}}\varphi^k_i(x)\varphi^k_j(x)\right] - \left[ \sum^p_{i=0}u_i^k - \mu \sum^p_{i=0}\sigma_i^k \right]\left[\int^{x_k}_{x_{k-1}}\varphi_i^k(x) \p{\varphi_j^k(x)}{x}dx \right] = - [u_p^k - \mu \sigma^k_p, 0, \dots, 0, u_p^{k-1} + \mu \sigma^{k-1}_p ]^T
+\end{dmath*}
+% \vspace{-.3in}
+\begin{dmath*}
+\sum^p_{i=0}u_i^k \left[ \int^{x_k}_{x_{k-1}}\varphi_i^k(x) \p{\varphi_j^k(x)}{x}dx \right] + \sum^p_{i=0}\sigma_i^k \left[ \int^{x_k}_{x_{k-1}}\varphi_i^k(x) \varphi_j^k(x)dx \right] = [ u^{k+1}_0, 0, \dots, 0, -u_0^k]^T
+\end{dmath*}
+As with the first example, we choose the same discontinuous piecewise polynomial basis functions and use the same quadrature rules. This yields a system of equations of the form
+$$ M^k \p{u^k}{t} - C^k(u^k - \mu \sigma^k) = - [u_p^k - \mu \sigma^k_p, 0, \dots, 0, u_p^{k-1} + \mu \sigma^{k-1}_p ]^T $$
+$$ M^k\sigma^k + C^k u^k =  [ u^{k+1}_0, 0, \dots, 0, -u_0^k]^T  $$
+where the elementary matrices are once again given by 
+$$ M^k_{ij} = \int_{x_{k-1}}^{x_k} \varphi^k_i(x)\varphi^k_j dx \quad C^k_{ij} = \int_{x_{k-1}}^{x_k} \varphi^k_i(x)  \p{\varphi_j^k}{x}dx$$
+In an analogous process to the first example, we solve the second equation for $\sigma_k$, substitute into the first equation, and subsequently solve for $\p{u^k}{t}$ which then becomes a time-dependent ODE which we can use Runge Kutta 4 to approximate the next timestep.
+
+\subsection{Generalization}
+We have seen the Discontinuous Galerkin formulations for two systems of conservation laws. To generalize to any first-order system of conservation laws in two or three dimensions, we consider the general form
+$$ \p{\mathbf{u}}{t} + \nabla \cdot \mathbf{F}(\mathbf{u}) = 0 $$
+to translate this domain into an appropriate mesh for numerical evaluation, we use some triangulation for elements $\kappa \in \mathcal{T}_h$ for the domain $\Omega$. The approximate solution given by $\mathbf{u}_h$ exists in the space of discontinuous piecewise polynomial functions 
+$$\mathbf{V}^p_h = \{ \mathbf{v} \in L^2(\Omega) : \mathbf{v}|_k \in P^p(\kappa) \forall \kappa \in T_h \}$$
+To get the weak form, an integral equation stipulated from the Galerkin formulation, we multiply by a test function $\mathbf{v}_h \in \mathbf{V}^p_h$ and integrate over every element $\kappa$
+$$\int_\kappa \left[\p{\mathbf{u}_h}{t} + \nabla \cdot \mathbf{F}(\mathbf{u}_h)\right]\mathbf{v}_h d\mathbf{x} = 0 $$
+We integrate by parts to get the formulation with the appropriate numerical flux discontinuities exposing themselves
+$$ \int_\kappa \left[\p{\mathbf{u}_h}{t}\right]\mathbf{v}_h d\mathbf{x} - \int_\kappa \mathbf{F}(\mathbf{u}_h)\nabla \mathbf{v}_h d\mathbf{x} + \int_{\partial k} \hat{\mathbf{F}}(\mathbf{u}^+_h,\mathbf{u}^-_h,\hat{\mathbf{n}})\mathbf{v}^+_h ds = 0$$
+The numerical fluxes associated with this become $\hat{\mathbf{F}}(\mathbf{u}^+_h,\mathbf{u}^-_h,\hat{\mathbf{n}})$ for the respective left and right state of $\mathbf{u}^+_h$ and $\mathbf{u}^-_h$ in direction $\hat{n}$. Since the examples given so far have been scalar, we have been able to use simple upwind/central/downwind schemes. In higher dimensions, we may use a number of common finite volume or finite difference as a base method for determination at these discontinuities, such as the Godunov, Roe, Osher, or MUSCL schemes. Therefore, the global problem is to find a $\mathbf{u}_h \in \mathbf{V}^p_h$ such that the weighted residual on the left hand side zeros out for all $\mathbf{v}_h \in \mathbf{V}^p_h$. The error becomes $\mathcal{O}(h^{p+1})$ for systems with smooth solutions, in other words, lacking shocks. This naturally enforces boundary conditions for any degree $p$ and results in a block-diagonal mass matrix as there are no overlapping basis functions. The resulting symmetric mass matrix is block diagonal due to the lack of any shared basis functions between two elements.
+
+\subsection{Computational Fluid Dynamics}
+
+
+\end{document}

@@ -1,0 +1,18 @@
+Multigrid begins with coarsest mesh and each triangle divides to smaller triangles. The finite element space is still continuous with the finest mesh. In the resulting lienar system, which can't be solved directly we have $$A_k\xi_k=b_k,\quad \xi_k\in\R^n$$ Say we don't solve this iterative method to absolute convergence, instead projecting the remaining error to a coarser mesh and then continuing. This can be accomplished by the steepest descent method or any other iterative method to solve $u$ for a fixed number of iterations, say 5 or 10. To obtain an approximation $\xi_k$ that solves the iterative system we can use $\Tilde{u_{h_k}}\in V_h$ which corresponds to the approximate solution $\xi_k$. 
+
+\section{New Things}
+\subsection{Time-Dependent FEM for Parabolic Equations}
+Since finite different methods use rectangular grids there are many limitations for conventional problems. Discretizing on a different domain we can use multigrid on an unstructured triangular mesh. For instance in a heat conduction problem, we have
+$$
+\begin{dcases*}
+\lambda \p{u}{t} - \nabla(u\nabla u) = f, \Vec{x} \in \Omega, t\in I = (0,T)\\
+u(\Vec{x},0) = u_0(\Vec{x})\\
+u=0\text{ on } \Gamma_1\times I\\
+\mu\p{u}{\Vec{n}}=0 \text{ on } \Gamma_2 \times I
+\end{dcases*}
+$$
+We assume the heat capacity is some constant $\lambda > a > 0$. The conductivity $\mu(\Vec{x}) > a > 0$ where $a$ is a constant. We want to lower the degree of the derivative and enforce continuity. Hence we need to lower the derivative of $u$ to the first order. Let $$V = \{v\in H^1(\Omega), v\rvert_{\Gamma_1} = 0\}$$ Then denote the inner product $$(u,v) = \int_\Omega uvd\Vec{x} \forall v \in V$$
+Then the equation in question becomes
+$$(\lambda \p{u}{t},v) + (u\nabla u, \nabla v) = (f,v) \quad \forall v\in V$$
+Using the boundary conditions we can see that
+$$\cancelto{0}{\int_{\Gamma_1}\mu v \p{u}{\Vec{n}}d\sigma} + \cancelto{0}{\int_{\Gamma_2}uv\p{u}{\Vec{n}}d\sigma} - (\mu \nabla u, \nabla v) = (f,v)$$
